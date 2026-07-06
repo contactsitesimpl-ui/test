@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Examples - SiteSimpl</title>
+<meta name="description" content="Browse our portfolio of professional websites built for businesses across various industries.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      container: { center: true, padding: "2rem", screens: { "2xl": "1400px" } },
+      extend: {
+        colors: {
+          border: "hsl(var(--border))",
+          background: "hsl(var(--background))",
+          foreground: "hsl(var(--foreground))",
+          primary: { DEFAULT: "hsl(var(--primary))", foreground: "hsl(var(--primary-foreground))" },
+          secondary: { DEFAULT: "hsl(var(--secondary))", foreground: "hsl(var(--secondary-foreground))" },
+          muted: { DEFAULT: "hsl(var(--muted))", foreground: "hsl(var(--muted-foreground))" },
+          card: { DEFAULT: "hsl(var(--card))", foreground: "hsl(var(--card-foreground))" },
+        },
+      },
+    },
+  };
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+  :root {
+    --background: 0 0% 100%; --foreground: 0 0% 9%;
+    --primary: 221 83% 53%; --primary-foreground: 0 0% 100%;
+    --card: 0 0% 100%; --secondary: 0 0% 96%;
+    --muted: 0 0% 96%; --muted-foreground: 0 0% 40%;
+    --border: 0 0% 90%; --radius: 0.75rem;
+  }
+  * { border-color: hsl(var(--border)); }
+  body {
+    font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background-color: hsl(var(--background)); color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+  }
+  .section-spacing { padding-top: 5rem; padding-bottom: 5rem; }
+  @media (min-width: 768px) { .section-spacing { padding-top: 8rem; padding-bottom: 8rem; } }
+  .elegant-card { background-color: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: 1rem; transition: all .3s ease; }
+  .elegant-card:hover { box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); transform: translateY(-4px); }
+  .badge { display: inline-flex; align-items: center; border-radius: 9999px; background-color: hsl(var(--secondary)); color: hsl(var(--secondary-foreground)); padding: .25rem .75rem; font-size: .75rem; font-weight: 600; white-space: nowrap; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; font-weight: 600; border-radius: 9999px; transition: background-color .2s ease; white-space: nowrap; }
+  .btn-primary { background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
+  .btn-primary:hover { background-color: hsl(var(--primary) / 0.9); }
+  .btn-ghost { background-color: transparent; color: hsl(var(--foreground)); }
+  .btn-ghost:hover { background-color: hsl(var(--secondary)); }
+  .btn-outline { background-color: transparent; border: 1px solid hsl(var(--border)); color: hsl(var(--foreground)); }
+  .btn-outline:hover { background-color: hsl(var(--secondary)); }
+</style>
+</head>
+<body class="bg-secondary/30 text-foreground">
+
+  <!-- ============ HEADER ============ -->
+  <header class="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
+    <div class="container mx-auto flex h-20 items-center justify-between px-6">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-foreground text-background font-bold text-xl">S</div>
+        <span class="text-2xl font-bold tracking-tight">SiteSimpl</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="text-sm font-semibold tracking-wide text-muted-foreground hover:text-primary transition-colors">Home</a>
+        <a href="pricing.html" class="text-sm font-semibold tracking-wide text-muted-foreground hover:text-primary transition-colors">Pricing</a>
+        <a href="examples.html" class="text-sm font-semibold tracking-wide text-primary">Examples</a>
+        <a href="faqs.html" class="text-sm font-semibold tracking-wide text-muted-foreground hover:text-primary transition-colors">FAQs</a>
+      </nav>
+      <div class="hidden md:flex items-center gap-4">
+        <a href="/login" class="btn btn-ghost px-6 py-2">Login</a>
+        <a href="quote.html" class="btn btn-primary px-6 py-2">Get Quote</a>
+      </div>
+      <button id="menuBtn" class="md:hidden p-2 -mr-2 text-foreground" aria-label="Toggle menu">
+        <i data-lucide="menu" class="h-6 w-6"></i>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden border-t bg-background absolute w-full shadow-xl">
+      <nav class="container mx-auto flex flex-col gap-2 px-6 py-6">
+        <a href="index.html" class="text-lg font-semibold py-3 border-b border-border/50">Home</a>
+        <a href="pricing.html" class="text-lg font-semibold py-3 border-b border-border/50">Pricing</a>
+        <a href="examples.html" class="text-lg font-semibold py-3 border-b border-border/50 text-primary">Examples</a>
+        <a href="faqs.html" class="text-lg font-semibold py-3 border-b border-border/50">FAQs</a>
+        <a href="quote.html" class="text-lg font-semibold py-3 border-b border-border/50">Get Quote</a>
+        <div class="pt-6 flex flex-col gap-3">
+          <a href="/login" class="btn btn-outline py-3 w-full">Login</a>
+          <a href="/signup" class="btn btn-primary py-3 w-full">Register</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="min-h-screen bg-secondary/30">
+    <section class="section-spacing">
+      <div class="container mx-auto px-6">
+        <div class="max-w-3xl mx-auto text-center mb-20">
+          <h1 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight">Our Work</h1>
+          <p class="text-xl text-muted-foreground leading-relaxed">Explore websites we've built for businesses like yours. Each project is tailored to meet specific needs and goals.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+
+          <div class="elegant-card p-0 overflow-hidden bg-background">
+            <div class="aspect-video overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1678690832311-bb6e361989ca" alt="Modern E-commerce Store" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+            </div>
+            <div class="p-6">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <h3 class="text-xl font-bold">Modern E-commerce Store</h3>
+                <span class="badge shrink-0">E-commerce</span>
+              </div>
+              <p class="text-muted-foreground leading-relaxed text-sm">Full-featured online store with product catalog, shopping cart, and secure checkout for a fashion retailer.</p>
+            </div>
+          </div>
+
+          <div class="elegant-card p-0 overflow-hidden bg-background">
+            <div class="aspect-video overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1524221629551-6dd14def5ffd" alt="Artisan Coffee Shop" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+            </div>
+            <div class="p-6">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <h3 class="text-xl font-bold">Artisan Coffee Shop</h3>
+                <span class="badge shrink-0">Restaurant</span>
+              </div>
+              <p class="text-muted-foreground leading-relaxed text-sm">Warm and inviting website showcasing menu items, location details, and online ordering for a local coffee roaster.</p>
+            </div>
+          </div>
+
+          <div class="elegant-card p-0 overflow-hidden bg-background">
+            <div class="aspect-video overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1688760871131-29afc15029ec" alt="Digital Marketing Agency" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+            </div>
+            <div class="p-6">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <h3 class="text-xl font-bold">Digital Marketing Agency</h3>
+                <span class="badge shrink-0">Service-Based</span>
+              </div>
+              <p class="text-muted-foreground leading-relaxed text-sm">Professional portfolio site highlighting services, case studies, and client testimonials for a growing agency.</p>
+            </div>
+          </div>
+
+          <div class="elegant-card p-0 overflow-hidden bg-background">
+            <div class="aspect-video overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8" alt="Law Firm Portal" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+            </div>
+            <div class="p-6">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <h3 class="text-xl font-bold">Law Firm Portal</h3>
+                <span class="badge shrink-0">Professional Services</span>
+              </div>
+              <p class="text-muted-foreground leading-relaxed text-sm">Sophisticated website with practice area details, attorney profiles, and client intake forms for a legal practice.</p>
+            </div>
+          </div>
+
+          <div class="elegant-card p-0 overflow-hidden bg-background">
+            <div class="aspect-video overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1687006067259-6de13ca3875e" alt="Community Foundation" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+            </div>
+            <div class="p-6">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <h3 class="text-xl font-bold">Community Foundation</h3>
+                <span class="badge shrink-0">Non-Profit</span>
+              </div>
+              <p class="text-muted-foreground leading-relaxed text-sm">Engaging site featuring mission statement, donation portal, and volunteer opportunities for a local non-profit.</p>
+            </div>
+          </div>
+
+          <div class="elegant-card p-0 overflow-hidden bg-background">
+            <div class="aspect-video overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1644995520656-e9b9a807ffbe" alt="Fitness Studio" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+            </div>
+            <div class="p-6">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <h3 class="text-xl font-bold">Fitness Studio</h3>
+                <span class="badge shrink-0">Service-Based</span>
+              </div>
+              <p class="text-muted-foreground leading-relaxed text-sm">Dynamic website with class schedules, trainer bios, and membership sign-up for a boutique fitness center.</p>
+            </div>
+          </div>
+
+          <div class="elegant-card p-0 overflow-hidden bg-background">
+            <div class="aspect-video overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1697638164340-6c5fc558bdf2" alt="Tech Startup" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+            </div>
+            <div class="p-6">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <h3 class="text-xl font-bold">Tech Startup</h3>
+                <span class="badge shrink-0">Other</span>
+              </div>
+              <p class="text-muted-foreground leading-relaxed text-sm">Clean and modern landing page showcasing product features, pricing tiers, and demo request form.</p>
+            </div>
+          </div>
+
+          <div class="elegant-card p-0 overflow-hidden bg-background">
+            <div class="aspect-video overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1670784772980-dc522f953042" alt="Real Estate Agency" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+            </div>
+            <div class="p-6">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <h3 class="text-xl font-bold">Real Estate Agency</h3>
+                <span class="badge shrink-0">Professional Services</span>
+              </div>
+              <p class="text-muted-foreground leading-relaxed text-sm">Property listing platform with search filters, virtual tours, and agent contact forms for a realty group.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-foreground text-background pt-20 pb-10">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-16">
+        <div class="md:col-span-5">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-background text-foreground font-bold text-xl">S</div>
+            <span class="text-2xl font-bold tracking-tight">SiteSimpl</span>
+          </div>
+          <p class="text-muted-foreground text-lg leading-relaxed max-w-sm">Professional website solutions for businesses of all sizes. Simple, elegant, and effective.</p>
+        </div>
+        <div class="md:col-span-3 md:col-start-7">
+          <h3 class="font-bold text-lg mb-6 tracking-wide">Navigation</h3>
+          <nav class="flex flex-col gap-4">
+            <a href="index.html" class="text-muted-foreground hover:text-background transition-colors font-medium">Home</a>
+            <a href="/plans" class="text-muted-foreground hover:text-background transition-colors font-medium">Plans</a>
+            <a href="examples.html" class="text-muted-foreground hover:text-background transition-colors font-medium">Examples</a>
+            <a href="faqs.html" class="text-muted-foreground hover:text-background transition-colors font-medium">FAQs</a>
+          </nav>
+        </div>
+        <div class="md:col-span-3">
+          <h3 class="font-bold text-lg mb-6 tracking-wide">Contact</h3>
+          <div class="flex flex-col gap-4">
+            <a href="mailto:hello@sitesimpl.com" class="flex items-center gap-3 text-muted-foreground hover:text-background transition-colors font-medium"><i data-lucide="mail" class="h-5 w-5"></i> hello@sitesimpl.com</a>
+            <a href="tel:+15551234567" class="flex items-center gap-3 text-muted-foreground hover:text-background transition-colors font-medium"><i data-lucide="phone" class="h-5 w-5"></i> (555) 123-4567</a>
+            <div class="flex gap-4 mt-4">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="bg-background/10 p-3 rounded-full text-background hover:bg-primary hover:text-primary-foreground transition-all" aria-label="Facebook"><i data-lucide="facebook" class="h-5 w-5"></i></a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="bg-background/10 p-3 rounded-full text-background hover:bg-primary hover:text-primary-foreground transition-all" aria-label="Twitter"><i data-lucide="twitter" class="h-5 w-5"></i></a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="bg-background/10 p-3 rounded-full text-background hover:bg-primary hover:text-primary-foreground transition-all" aria-label="LinkedIn"><i data-lucide="linkedin" class="h-5 w-5"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-background/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+        <p class="text-muted-foreground font-medium">© <span id="year"></span> SiteSimpl. All rights reserved.</p>
+        <div class="flex gap-8">
+          <a href="/privacy" class="text-muted-foreground hover:text-background transition-colors font-medium">Privacy Policy</a>
+          <a href="/terms" class="text-muted-foreground hover:text-background transition-colors font-medium">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      menuBtn.innerHTML = mobileMenu.classList.contains('hidden') ? '<i data-lucide="menu" class="h-6 w-6"></i>' : '<i data-lucide="x" class="h-6 w-6"></i>';
+      lucide.createIcons();
+    });
+    lucide.createIcons();
+  </script>
+</body>
+</html>
