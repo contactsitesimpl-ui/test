@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing - SiteSimpl</title>
+<meta name="description" content="Transparent pricing with a one-time build fee and an affordable ongoing monthly rate. Choose the right plan for your business.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      container: { center: true, padding: "2rem", screens: { "2xl": "1400px" } },
+      extend: {
+        colors: {
+          border: "hsl(var(--border))",
+          background: "hsl(var(--background))",
+          foreground: "hsl(var(--foreground))",
+          primary: { DEFAULT: "hsl(var(--primary))", foreground: "hsl(var(--primary-foreground))" },
+          secondary: { DEFAULT: "hsl(var(--secondary))", foreground: "hsl(var(--secondary-foreground))" },
+          muted: { DEFAULT: "hsl(var(--muted))", foreground: "hsl(var(--muted-foreground))" },
+          card: { DEFAULT: "hsl(var(--card))", foreground: "hsl(var(--card-foreground))" },
+        },
+      },
+    },
+  };
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+  :root {
+    --background: 0 0% 100%; --foreground: 0 0% 9%;
+    --primary: 221 83% 53%; --primary-foreground: 0 0% 100%;
+    --card: 0 0% 100%; --secondary: 0 0% 96%;
+    --muted: 0 0% 96%; --muted-foreground: 0 0% 40%;
+    --border: 0 0% 90%; --radius: 0.75rem;
+  }
+  * { border-color: hsl(var(--border)); }
+  body {
+    font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background-color: hsl(var(--background)); color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+  }
+  .section-spacing { padding-top: 5rem; padding-bottom: 5rem; }
+  @media (min-width: 768px) { .section-spacing { padding-top: 8rem; padding-bottom: 8rem; } }
+  .btn { display: inline-flex; align-items: center; justify-content: center; font-weight: 600; border-radius: 9999px; transition: background-color .2s ease; white-space: nowrap; }
+  .btn-primary { background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
+  .btn-primary:hover { background-color: hsl(var(--primary) / 0.9); }
+  .btn-ghost { background-color: transparent; color: hsl(var(--foreground)); }
+  .btn-ghost:hover { background-color: hsl(var(--secondary)); }
+  .btn-outline { background-color: transparent; border: 1px solid hsl(var(--border)); color: hsl(var(--foreground)); }
+  .btn-outline:hover { background-color: hsl(var(--secondary)); }
+</style>
+</head>
+<body class="bg-secondary/30 text-foreground">
+
+  <!-- ============ HEADER ============ -->
+  <header class="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
+    <div class="container mx-auto flex h-20 items-center justify-between px-6">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-foreground text-background font-bold text-xl">S</div>
+        <span class="text-2xl font-bold tracking-tight">SiteSimpl</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="text-sm font-semibold tracking-wide text-muted-foreground hover:text-primary transition-colors">Home</a>
+        <a href="pricing.html" class="text-sm font-semibold tracking-wide text-primary">Pricing</a>
+        <a href="examples.html" class="text-sm font-semibold tracking-wide text-muted-foreground hover:text-primary transition-colors">Examples</a>
+        <a href="faqs.html" class="text-sm font-semibold tracking-wide text-muted-foreground hover:text-primary transition-colors">FAQs</a>
+      </nav>
+      <div class="hidden md:flex items-center gap-4">
+        <a href="/login" class="btn btn-ghost px-6 py-2">Login</a>
+        <a href="quote.html" class="btn btn-primary px-6 py-2">Get Quote</a>
+      </div>
+      <button id="menuBtn" class="md:hidden p-2 -mr-2 text-foreground" aria-label="Toggle menu">
+        <i data-lucide="menu" class="h-6 w-6"></i>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden border-t bg-background absolute w-full shadow-xl">
+      <nav class="container mx-auto flex flex-col gap-2 px-6 py-6">
+        <a href="index.html" class="text-lg font-semibold py-3 border-b border-border/50">Home</a>
+        <a href="pricing.html" class="text-lg font-semibold py-3 border-b border-border/50 text-primary">Pricing</a>
+        <a href="examples.html" class="text-lg font-semibold py-3 border-b border-border/50">Examples</a>
+        <a href="faqs.html" class="text-lg font-semibold py-3 border-b border-border/50">FAQs</a>
+        <a href="quote.html" class="text-lg font-semibold py-3 border-b border-border/50">Get Quote</a>
+        <div class="pt-6 flex flex-col gap-3">
+          <a href="/login" class="btn btn-outline py-3 w-full">Login</a>
+          <a href="/signup" class="btn btn-primary py-3 w-full">Register</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="min-h-screen bg-secondary/30">
+    <div class="section-spacing">
+      <header class="mb-16 text-center max-w-3xl mx-auto px-6">
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-6">Simple, transparent pricing</h1>
+        <p class="text-xl text-muted-foreground leading-relaxed">
+          We separate your one-time build cost from your monthly hosting and support. No hidden fees.
+        </p>
+      </header>
+
+      <div class="px-6">
+        <div class="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto items-center">
+
+          <!-- Simpl -->
+          <div class="rounded-3xl border border-border bg-card p-8 flex flex-col h-full shadow-sm hover:shadow-md transition-all duration-300">
+            <div class="mb-6">
+              <h3 class="text-2xl font-bold">Simpl</h3>
+              <p class="text-muted-foreground mt-2 text-sm leading-relaxed min-h-[40px]">Perfect for small businesses getting started online.</p>
+            </div>
+            <div class="flex flex-col gap-3 mb-8">
+              <div class="flex items-center justify-between bg-secondary/60 rounded-2xl p-4">
+                <span class="text-xs font-bold tracking-wider text-muted-foreground uppercase">Upfront Build</span>
+                <span class="font-semibold">$299 AUD</span>
+              </div>
+              <div class="flex items-center justify-between bg-primary/5 rounded-2xl p-4 border border-primary/10">
+                <span class="text-xs font-bold tracking-wider text-primary uppercase">Ongoing</span>
+                <div class="flex items-baseline gap-1">
+                  <span class="text-2xl font-bold text-foreground">$49</span>
+                  <span class="text-sm text-muted-foreground font-medium">/mo</span>
+                </div>
+              </div>
+            </div>
+            <ul class="space-y-4 mb-8 flex-1">
+              <li class="flex items-start gap-3"><div class="mt-0.5 bg-primary/10 p-1 rounded-full text-primary shrink-0"><i data-lucide="check" class="h-3 w-3 stroke-[3]"></i></div><span class="text-muted-foreground text-sm leading-snug">Custom 3-Page Design</span></li>
+              <li class="flex items-start gap-3"><div class="mt-0.5 bg-primary/10 p-1 rounded-full text-primary shrink-0"><i data-lucide="check" class="h-3 w-3 stroke-[3]"></i></div><span class="text-muted-foreground text-sm leading-snug">Mobile Responsive Layout</span></li>
+              <li class="flex items-start gap-3"><div class="mt-0.5 bg-primary/10 p-1 rounded-full text-primary shrink-0"><i data-lucide="check" class="h-3 w-3 stroke-[3]"></i></div><span class="text-muted-foreground text-sm leading-snug">Basic SEO Optimization</span></li>
+              <li class="flex items-start gap-3"><div class="mt-0.5 bg-primary/10 p-1 rounded-full text-primary shrink-0"><i data-lucide="check" class="h-3 w-3 stroke-[3]"></i></div><span class="text-muted-foreground text-sm leading-snug">Secure Cloud Hosting</span></li>
+              <li class="flex items-start gap-3"><div class="mt-0.5 bg-primary/10 p-1 rounded-full text-primary shrink-0"><i data-lucide="check" class="h-3 w-3 stroke-[3]"></i></div><span class="text-muted-foreground text-sm leading-snug">SSL Certificate</span></li>
+              <li class="flex items-start gap-3"><div class="mt-0.5 bg-primary/10 p-1 rounded-full text-primary shrink-0"><i data-lucide="check" class="h-3 w-3 stroke-[3]"></i></div><span class="text-muted-foreground text-sm leading-snug">Standard Email Support</span></li>
+            </ul>
+            <div class="mt-auto pt-4">
+              <a href="quote.html" class="btn btn-outline w-full py-4 text-base">Get Started</a>
+            </div>
+          </div>
+
+          <!-- Pro (popular) -->
+          <div class="rounded-3xl border border-primary bg-card p-8 flex flex-col h-full shadow-xl scale-105 relative z-10 transition-all duration-300">
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold tracking-wide">Most Popular</div>
+            <div class="mb-6">
+              <h3 class="text-2xl font-bold">Pro</h3>
+              <p class="text-muted-foreground mt-2 text-sm leading-relaxed min-h-[40px]">Ideal for growing businesses that need more features.</p>
+            </div>
+            <div class="flex flex-col gap-3 mb-8">
+              <div class="flex items-center justify-between bg-secondary/60 rounded-2xl p-4">
+                <span class="text-xs font-bold tracking-wider text-muted-foreground uppercase">Upfront Build</span>
+                <span class="font-semibold">$599 AUD</span>
+              </div>
+              <div class="flex items-center justify-between bg-primary/5 rounded-2xl p-4 border border-primary/10">
+                <span class="text-xs font-bold tracking-wider text-primary uppercase">Ongoing</span>
+                <div class="flex items-baseline gap-1">
+                  <span class="text-2xl font-bold text-foreground">$99</span>
+                  <span class="text-sm text-muted-foreground font-medium">/mo</span>
+                </div>
+              </div>
+            </div>
+            <ul class="space-y-4 mb-8 flex-1">
+              <li class="flex items-start gap-3"><div class="mt-0.5 bg-primary/10 p-1 rounded-full text-primary shrink-0"><i data-lucide="check" class="h-3 w-3 stroke-[3]"></i></div><span class="text-muted-foreground text-sm leading-snug">Custom 7-Page Design</span></li>
+              <li class="flex items-start gap-3"><div class="mt-0.5 bg-primary/10 p-1 rounded-full text-primary shrink-0"><i data-lucide="check" class="h-3 w-3 stroke-[3]"></i></div><span class="text-muted-foreground text-sm leading-snug">Mobile Responsive Layout</span></li>
+              <li class="flex items-start gap-3"><div class="mt-0.5 bg-primary/10 p-1 rounded-full text-primary shrink-0"><i data-lucide="check" class="h-3 w-3 stroke-[3]"></i></div><span class="text-muted-foreground text-sm leading-snug">Advanced SEO Setup</span></li>
+              <li class="flex items-start gap-3"><div class="mt-0.5 bg-primary/10 p-1 rounded-full text-primary shrink-0"><i data-lucide="check" class="h-3 w-3 stroke-[3]"></i></div><span class="text-muted-foreground text-sm leading-snug">Secure Cloud Hosting</span></li>
+              <li class="flex items-start gap-3"><div class="mt-0.5 bg-primary/10 p-1 rounded-full text-primary shrink-0"><i data-lucide="check" class="h-3 w-3 stroke-[3]"></i></div><span class="text-muted-foreground text-sm leading-snug">Blog / CMS Integration</span></li>
+              <li class="flex items-start gap-3"><div class="mt-0.5 bg-primary/10 p-1 rounded-full text-primary shrink-0"><i data-lucide="check" class="h-3 w-3 stroke-[3]"></i></div><span class="text-muted-foreground text-sm leading-snug">Analytics Dashboard</span></li>
+              <li class="flex items-start gap-3"><div class="mt-0.5 bg-primary/10 p-1 rounded-full text-primary shrink-0"><i data-lucide="check" class="h-3 w-3 stroke-[3]"></i></div><span class="text-muted-foreground text-sm leading-snug">Priority Email Support</span></li>
+            </ul>
+            <div class="mt-auto pt-4">
+              <a href="quote.html" class="btn btn-primary w-full py-4 text-base">Get Started</a>
+            </div>
+          </div>
+
+          <!-- Enterprise -->
+          <div class="rounded-3xl border border-border bg-card p-8 flex flex-col h-full shadow-sm hover:shadow-md transition-all duration-300">
+            <div class="mb-6">
+              <h3 class="text-2xl font-bold">Enterprise</h3>
+              <p class="text-muted-foreground mt-2 text-sm leading-relaxed min-h-[40px]">Comprehensive solution for established brands.</p>
+            </div>
+            <div class="flex flex-col gap-3 mb-8">
+              <div class="flex items-center justify-between bg-secondary/60 rounded-2xl p-4">
+                <span class="text-xs font-bold tracking-wider text-muted-foreground uppercase">Upfront Build</span>
+                <span class="font-semibold">$1,299 AUD</span>
+              </div>
+              <div class="flex items-center justify-between bg-primary/5 rounded-2xl p-4 border border-primary/10">
+                <span class="text-xs font-bold tracking-wider text-primary uppercase">Ongoing</span>
+                <div class="flex items-baseline gap-1">
+                  <span class="text-2xl font-bold text-foreground">$199</span>
+                  <span class="text-sm text-muted-foreground font-medium">/mo</span>
+                </div>
+              </div>
+            </div>
+            <ul class="space-y-4 mb-8 flex-1">
+              <li class="flex items-start gap-3"><div class="mt-0.5 bg-primary/10 p-1 rounded-full text-primary shrink-0"><i data-lucide="check" class="h-3 w-3 stroke-[3]"></i></div><span class="text-muted-foreground text-sm leading-snug">Unlimited Pages & Custom Design</span></li>
+              <li class="flex items-start gap-3"><div class="mt-0.5 bg-primary/10 p-1 rounded-full text-primary shrink-0"><i data-lucide="check" class="h-3 w-3 stroke-[3]"></i></div><span class="text-muted-foreground text-sm leading-snug">Advanced E-commerce Capabilities</span></li>
+              <li class="flex items-start gap-3"><div class="mt-0.5 bg-primary/10 p-1 rounded-full text-primary shrink-0"><i data-lucide="check" class="h-3 w-3 stroke-[3]"></i></div><span class="text-muted-foreground text-sm leading-snug">Custom Integrations & APIs</span></li>
+              <li class="flex items-start gap-3"><div class="mt-0.5 bg-primary/10 p-1 rounded-full text-primary shrink-0"><i data-lucide="check" class="h-3 w-3 stroke-[3]"></i></div><span class="text-muted-foreground text-sm leading-snug">Premium Cloud Hosting</span></li>
+              <li class="flex items-start gap-3"><div class="mt-0.5 bg-primary/10 p-1 rounded-full text-primary shrink-0"><i data-lucide="check" class="h-3 w-3 stroke-[3]"></i></div><span class="text-muted-foreground text-sm leading-snug">Dedicated Account Manager</span></li>
+              <li class="flex items-start gap-3"><div class="mt-0.5 bg-primary/10 p-1 rounded-full text-primary shrink-0"><i data-lucide="check" class="h-3 w-3 stroke-[3]"></i></div><span class="text-muted-foreground text-sm leading-snug">Monthly Performance Reports</span></li>
+              <li class="flex items-start gap-3"><div class="mt-0.5 bg-primary/10 p-1 rounded-full text-primary shrink-0"><i data-lucide="check" class="h-3 w-3 stroke-[3]"></i></div><span class="text-muted-foreground text-sm leading-snug">24/7 Priority Support</span></li>
+            </ul>
+            <div class="mt-auto pt-4">
+              <a href="quote.html" class="btn btn-outline w-full py-4 text-base">Get Started</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-foreground text-background pt-20 pb-10">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-16">
+        <div class="md:col-span-5">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-background text-foreground font-bold text-xl">S</div>
+            <span class="text-2xl font-bold tracking-tight">SiteSimpl</span>
+          </div>
+          <p class="text-muted-foreground text-lg leading-relaxed max-w-sm">Professional website solutions for businesses of all sizes. Simple, elegant, and effective.</p>
+        </div>
+        <div class="md:col-span-3 md:col-start-7">
+          <h3 class="font-bold text-lg mb-6 tracking-wide">Navigation</h3>
+          <nav class="flex flex-col gap-4">
+            <a href="index.html" class="text-muted-foreground hover:text-background transition-colors font-medium">Home</a>
+            <a href="/plans" class="text-muted-foreground hover:text-background transition-colors font-medium">Plans</a>
+            <a href="examples.html" class="text-muted-foreground hover:text-background transition-colors font-medium">Examples</a>
+            <a href="faqs.html" class="text-muted-foreground hover:text-background transition-colors font-medium">FAQs</a>
+          </nav>
+        </div>
+        <div class="md:col-span-3">
+          <h3 class="font-bold text-lg mb-6 tracking-wide">Contact</h3>
+          <div class="flex flex-col gap-4">
+            <a href="mailto:hello@sitesimpl.com" class="flex items-center gap-3 text-muted-foreground hover:text-background transition-colors font-medium"><i data-lucide="mail" class="h-5 w-5"></i> hello@sitesimpl.com</a>
+            <a href="tel:+15551234567" class="flex items-center gap-3 text-muted-foreground hover:text-background transition-colors font-medium"><i data-lucide="phone" class="h-5 w-5"></i> (555) 123-4567</a>
+            <div class="flex gap-4 mt-4">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="bg-background/10 p-3 rounded-full text-background hover:bg-primary hover:text-primary-foreground transition-all" aria-label="Facebook"><i data-lucide="facebook" class="h-5 w-5"></i></a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="bg-background/10 p-3 rounded-full text-background hover:bg-primary hover:text-primary-foreground transition-all" aria-label="Twitter"><i data-lucide="twitter" class="h-5 w-5"></i></a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="bg-background/10 p-3 rounded-full text-background hover:bg-primary hover:text-primary-foreground transition-all" aria-label="LinkedIn"><i data-lucide="linkedin" class="h-5 w-5"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-background/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+        <p class="text-muted-foreground font-medium">© <span id="year"></span> SiteSimpl. All rights reserved.</p>
+        <div class="flex gap-8">
+          <a href="/privacy" class="text-muted-foreground hover:text-background transition-colors font-medium">Privacy Policy</a>
+          <a href="/terms" class="text-muted-foreground hover:text-background transition-colors font-medium">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      menuBtn.innerHTML = mobileMenu.classList.contains('hidden') ? '<i data-lucide="menu" class="h-6 w-6"></i>' : '<i data-lucide="x" class="h-6 w-6"></i>';
+      lucide.createIcons();
+    });
+    lucide.createIcons();
+  </script>
+</body>
+</html>
