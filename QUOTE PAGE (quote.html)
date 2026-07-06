@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get a Quote - SiteSimpl</title>
+<meta name="description" content="Request a custom quote for your website project. Tell us about your needs and we'll get back to you promptly.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      container: { center: true, padding: "2rem", screens: { "2xl": "1400px" } },
+      extend: {
+        colors: {
+          border: "hsl(var(--border))",
+          background: "hsl(var(--background))",
+          foreground: "hsl(var(--foreground))",
+          primary: { DEFAULT: "hsl(var(--primary))", foreground: "hsl(var(--primary-foreground))" },
+          secondary: { DEFAULT: "hsl(var(--secondary))", foreground: "hsl(var(--secondary-foreground))" },
+          muted: { DEFAULT: "hsl(var(--muted))", foreground: "hsl(var(--muted-foreground))" },
+          card: { DEFAULT: "hsl(var(--card))", foreground: "hsl(var(--card-foreground))" },
+        },
+      },
+    },
+  };
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+  :root {
+    --background: 0 0% 100%; --foreground: 0 0% 9%;
+    --primary: 221 83% 53%; --primary-foreground: 0 0% 100%;
+    --card: 0 0% 100%; --secondary: 0 0% 96%;
+    --muted: 0 0% 96%; --muted-foreground: 0 0% 40%;
+    --border: 0 0% 90%; --radius: 0.75rem;
+  }
+  * { border-color: hsl(var(--border)); }
+  body {
+    font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background-color: hsl(var(--background)); color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+  }
+  .section-spacing { padding-top: 5rem; padding-bottom: 5rem; }
+  @media (min-width: 768px) { .section-spacing { padding-top: 8rem; padding-bottom: 8rem; } }
+  .elegant-card { background-color: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: 1rem; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; font-weight: 600; border-radius: 9999px; transition: background-color .2s ease; white-space: nowrap; }
+  .btn-primary { background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
+  .btn-primary:hover { background-color: hsl(var(--primary) / 0.9); }
+  .btn-ghost { background-color: transparent; color: hsl(var(--foreground)); }
+  .btn-ghost:hover { background-color: hsl(var(--secondary)); }
+  .btn-outline { background-color: transparent; border: 1px solid hsl(var(--border)); color: hsl(var(--foreground)); }
+  .btn-outline:hover { background-color: hsl(var(--secondary)); }
+
+  .field-label { display: block; font-weight: 600; font-size: .875rem; margin-bottom: .5rem; }
+  .field-input {
+    width: 100%; border: 1px solid hsl(var(--border)); border-radius: calc(var(--radius) - 2px);
+    padding: .65rem 1rem; font-family: inherit; font-size: 1rem; background: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+  .field-input:focus { outline: 2px solid hsl(var(--primary) / 0.4); outline-offset: 1px; border-color: hsl(var(--primary)); }
+  textarea.field-input { resize: none; }
+</style>
+</head>
+<body class="bg-secondary/30 text-foreground">
+
+  <!-- ============ HEADER ============ -->
+  <header class="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
+    <div class="container mx-auto flex h-20 items-center justify-between px-6">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-foreground text-background font-bold text-xl">S</div>
+        <span class="text-2xl font-bold tracking-tight">SiteSimpl</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="text-sm font-semibold tracking-wide text-muted-foreground hover:text-primary transition-colors">Home</a>
+        <a href="pricing.html" class="text-sm font-semibold tracking-wide text-muted-foreground hover:text-primary transition-colors">Pricing</a>
+        <a href="examples.html" class="text-sm font-semibold tracking-wide text-muted-foreground hover:text-primary transition-colors">Examples</a>
+        <a href="faqs.html" class="text-sm font-semibold tracking-wide text-muted-foreground hover:text-primary transition-colors">FAQs</a>
+      </nav>
+      <div class="hidden md:flex items-center gap-4">
+        <a href="/login" class="btn btn-ghost px-6 py-2">Login</a>
+        <a href="quote.html" class="btn btn-primary px-6 py-2">Get Quote</a>
+      </div>
+      <button id="menuBtn" class="md:hidden p-2 -mr-2 text-foreground" aria-label="Toggle menu">
+        <i data-lucide="menu" class="h-6 w-6"></i>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden border-t bg-background absolute w-full shadow-xl">
+      <nav class="container mx-auto flex flex-col gap-2 px-6 py-6">
+        <a href="index.html" class="text-lg font-semibold py-3 border-b border-border/50">Home</a>
+        <a href="pricing.html" class="text-lg font-semibold py-3 border-b border-border/50">Pricing</a>
+        <a href="examples.html" class="text-lg font-semibold py-3 border-b border-border/50">Examples</a>
+        <a href="faqs.html" class="text-lg font-semibold py-3 border-b border-border/50">FAQs</a>
+        <a href="quote.html" class="text-lg font-semibold py-3 border-b border-border/50">Get Quote</a>
+        <div class="pt-6 flex flex-col gap-3">
+          <a href="/login" class="btn btn-outline py-3 w-full">Login</a>
+          <a href="/signup" class="btn btn-primary py-3 w-full">Register</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="min-h-screen bg-secondary/30">
+    <section class="section-spacing">
+      <div class="container mx-auto px-6">
+        <div class="max-w-2xl mx-auto">
+          <div class="text-center mb-16">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight">Get Your Custom Quote</h1>
+            <p class="text-xl text-muted-foreground leading-relaxed">Tell us about your project and we'll provide a tailored solution for your business</p>
+          </div>
+
+          <div class="elegant-card bg-background p-8 md:p-12">
+            <div class="mb-8">
+              <h2 class="text-2xl font-bold mb-2">Project Details</h2>
+              <p class="text-muted-foreground">Fill out the form below and we'll get back to you within 24 hours</p>
+            </div>
+
+            <!-- Note: this form has no backend wired up. On WordPress, point the "action"
+                 at your form plugin (WPForms/Contактform 7/Gravity Forms) or your own endpoint. -->
+            <form class="space-y-6" id="quoteForm">
+              <div>
+                <label class="field-label" for="email">Email Address</label>
+                <input class="field-input" type="email" id="email" name="email" placeholder="your@email.com" required>
+              </div>
+
+              <div>
+                <label class="field-label" for="business_type">Business Type</label>
+                <select class="field-input" id="business_type" name="business_type" required>
+                  <option value="" disabled selected>Select your business type</option>
+                  <option value="E-commerce">E-commerce</option>
+                  <option value="Restaurant">Restaurant</option>
+                  <option value="Service-Based">Service-Based</option>
+                  <option value="Professional Services">Professional Services</option>
+                  <option value="Non-Profit">Non-Profit</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="field-label" for="website_needs">Website Needs</label>
+                <textarea class="field-input" id="website_needs" name="website_needs" rows="6" placeholder="Tell us about your website requirements..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-full py-4 text-base">Get Your Quote</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-foreground text-background pt-20 pb-10">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-16">
+        <div class="md:col-span-5">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-background text-foreground font-bold text-xl">S</div>
+            <span class="text-2xl font-bold tracking-tight">SiteSimpl</span>
+          </div>
+          <p class="text-muted-foreground text-lg leading-relaxed max-w-sm">Professional website solutions for businesses of all sizes. Simple, elegant, and effective.</p>
+        </div>
+        <div class="md:col-span-3 md:col-start-7">
+          <h3 class="font-bold text-lg mb-6 tracking-wide">Navigation</h3>
+          <nav class="flex flex-col gap-4">
+            <a href="index.html" class="text-muted-foreground hover:text-background transition-colors font-medium">Home</a>
+            <a href="/plans" class="text-muted-foreground hover:text-background transition-colors font-medium">Plans</a>
+            <a href="examples.html" class="text-muted-foreground hover:text-background transition-colors font-medium">Examples</a>
+            <a href="faqs.html" class="text-muted-foreground hover:text-background transition-colors font-medium">FAQs</a>
+          </nav>
+        </div>
+        <div class="md:col-span-3">
+          <h3 class="font-bold text-lg mb-6 tracking-wide">Contact</h3>
+          <div class="flex flex-col gap-4">
+            <a href="mailto:hello@sitesimpl.com" class="flex items-center gap-3 text-muted-foreground hover:text-background transition-colors font-medium"><i data-lucide="mail" class="h-5 w-5"></i> hello@sitesimpl.com</a>
+            <a href="tel:+15551234567" class="flex items-center gap-3 text-muted-foreground hover:text-background transition-colors font-medium"><i data-lucide="phone" class="h-5 w-5"></i> (555) 123-4567</a>
+            <div class="flex gap-4 mt-4">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="bg-background/10 p-3 rounded-full text-background hover:bg-primary hover:text-primary-foreground transition-all" aria-label="Facebook"><i data-lucide="facebook" class="h-5 w-5"></i></a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="bg-background/10 p-3 rounded-full text-background hover:bg-primary hover:text-primary-foreground transition-all" aria-label="Twitter"><i data-lucide="twitter" class="h-5 w-5"></i></a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="bg-background/10 p-3 rounded-full text-background hover:bg-primary hover:text-primary-foreground transition-all" aria-label="LinkedIn"><i data-lucide="linkedin" class="h-5 w-5"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-background/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+        <p class="text-muted-foreground font-medium">© <span id="year"></span> SiteSimpl. All rights reserved.</p>
+        <div class="flex gap-8">
+          <a href="/privacy" class="text-muted-foreground hover:text-background transition-colors font-medium">Privacy Policy</a>
+          <a href="/terms" class="text-muted-foreground hover:text-background transition-colors font-medium">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      menuBtn.innerHTML = mobileMenu.classList.contains('hidden') ? '<i data-lucide="menu" class="h-6 w-6"></i>' : '<i data-lucide="x" class="h-6 w-6"></i>';
+      lucide.createIcons();
+    });
+
+    document.getElementById('quoteForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('This demo form has no backend wired up yet — connect it to your WordPress form handler.');
+    });
+
+    lucide.createIcons();
+  </script>
+</body>
+</html>
